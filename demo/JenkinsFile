@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Fetch the code from the repository
+                git 'https://github.com/your-repo/spring-boot-app.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build the Spring Boot application
+                sh './mvnw clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run the tests
+                sh './mvnw test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                // Package the application into a jar file
+                sh './mvnw package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the jar file (you can define your deployment steps here)
+                echo 'Deploying the Spring Boot application...'
+                // Sample: run the jar (this is just for testing; in production, deploy to a server)
+                sh 'java -jar target/demo-0.0.1-SNAPSHOT.jar'
+            }
+        }
+    }
+}
