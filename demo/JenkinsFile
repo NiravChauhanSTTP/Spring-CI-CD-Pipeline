@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Fetch the code from the repository
-                git 'https://github.com/your-repo/spring-boot-app.git'
+                git 'https://github.com/NiravChauhanSTTP/Spring-CI-CD-Pipeline.git'
             }
         }
 
